@@ -8,7 +8,7 @@
 這個Github專案 README 記錄的成功案例是 macOS 27.3 Beta、Build 26C5035r
 我的 M4 MacBook Air 也在這個 Build 上成功顯示音樂動態島不確定其他MacOS能否成功w
 
-#順帶一提w
+# 順帶一提w
 我請ChatGPT Codex 幫我製作了這個打開就可以執行的版本awa
 下載好Zip解壓縮執行``啟動原生動態島.command``就ok了w
 但別忘了關閉SIP =.=
