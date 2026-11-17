@@ -1,3 +1,6 @@
+選擇你的語言:3 Select your language :3
+[繁體中文](README.md) [English](README.en.md)
+
 # Native Mac Island Experiment
 
 This experiment uses LLDB to set in-memory flags in the running `MenuBarAgent` process and enable macOS’s built-in Dynamic Island interface. It does not install an app or permanently change preferences. The effect disappears when `MenuBarAgent` or the Mac restarts.
