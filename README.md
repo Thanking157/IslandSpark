@@ -2,7 +2,7 @@
 選擇你的語言:3 Select your language :3  
 [繁體中文](README.md) [English](README.en.md)
 
-# 這個實驗使用 LLDB，在執行中的 MenuBarAgent 設定記憶體旗標，啟用 macOS 內建的動態島介面。它不會安裝App，也不會永久修改偏好設定；重啟 MenuBarAgent 或重新開機後，效果會消失
+這個實驗使用 LLDB，在執行中的 MenuBarAgent 設定記憶體旗標，啟用 macOS 內建的動態島介面。它不會安裝App，也不會永久修改偏好設定；重啟 MenuBarAgent 或重新開機後，效果會消失
 # 這是一個中文翻譯版本+附帶一鍵安裝方法
 # [原版Github專案連結:3](https://github.com/habildem/native-mac-island-experiment)
 # 已知相容性:D
