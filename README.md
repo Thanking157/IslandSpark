@@ -3,8 +3,9 @@
 [繁體中文](README.md) [English](README.en.md)
 
 這個實驗使用 LLDB，在執行中的 MenuBarAgent 設定記憶體旗標，啟用 macOS 內建的動態島介面。它不會安裝App，也不會永久修改偏好設定；重啟 MenuBarAgent 或重新開機後，效果會消失
+![動態島效果示範](dynamic-island-demo.GIF)
 # 這是一個中文翻譯版本+附帶一鍵安裝方法
-# [原版Github專案連結:3](https://github.com/habildem/native-mac-island-experiment)
+[原版Github專案連結:3](https://github.com/habildem/native-mac-island-experiment)
 # 已知相容性:D
 這個Github專案 README 記錄的成功案例是 macOS 27.3 Beta、Build 26C5035r  
 我的 M4 MacBook Air 也在這個 Build 上成功顯示音樂動態島不確定其他MacOS能否成功w
