@@ -11,7 +11,7 @@ This experiment uses LLDB to set in-memory flags in the running `MenuBarAgent` p
 ## Known compatibility
 
 The project’s README records a successful result on macOS 27.3 Beta, Build `26C5035r`. My M4 MacBook Air also displayed the music Dynamic Island on this build. I’m not sure whether other macOS versions are compatible.
-
+![Dynamic Island demo](dynamic-island-demo.GIF)
 ## A ready-to-run version
 
 By the way, I asked ChatGPT Codex to make a version that you can run directly. Download the ZIP, extract it, and run `Enable_native_Dynamic_Island.command`.
