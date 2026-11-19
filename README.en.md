@@ -1,12 +1,29 @@
-選擇你的語言:3 Select your language :3
+<div align="center">
 
-[繁體中文](README.md) [English](README.en.md)
+  <br>
 
-# Native Mac Island Experiment
+  <a href="https://github.com/Thanking157/IslandSpark">
+    <img src="https://raw.githubusercontent.com/Thanking157/IslandSpark/main/dynamic-island-demo.GIF" alt="IslandSpark Dynamic Island Demo" width="350">
+  </a>
 
-This experiment uses LLDB to set in-memory flags in the running `MenuBarAgent` process and enable macOS’s built-in Dynamic Island interface. It does not install an app or permanently change preferences. The effect disappears when `MenuBarAgent` or the Mac restarts.
+  <h1>IslandSpark</h1>
 
-[Original GitHub project](https://github.com/habildem/native-mac-island-experiment)
+  <p><b>Native Dynamic Island for macOS.</b></p>
+  <p>by Thanking157</p>
+
+  <p>
+    An experimental project that enables macOS's native Dynamic Island on Mac :3
+  </p>
+
+  <p>
+    Enable macOS's built-in Dynamic Island interface using LLDB!<br>
+    No additional app installation or permanent changes to system preferences required w
+  </p>
+
+GitHub Repository · Original Project · 繁體中文
+
+</div>
+
 
 ## Known compatibility
 
