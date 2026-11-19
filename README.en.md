@@ -20,24 +20,29 @@
     No additional app installation or permanent changes to system preferences required w
   </p>
 
-GitHub Repository · Original Project · 繁體中文
+  [GitHub Repository](https://github.com/Thanking157/IslandSpark) · [Original Project](https://github.com/habildem/native-mac-island-experiment) · [繁體中文](README.md)
 
 </div>
 
+# Known Compatibility :D
 
-## Known compatibility
+The original GitHub project's README documents a successful test on macOS 27.3 Beta, Build 26C5035r.
 
-The project’s README records a successful result on macOS 27.3 Beta, Build `26C5035r`. My M4 MacBook Air also displayed the music Dynamic Island on this build. I’m not sure whether other macOS versions are compatible.
+My M4 MacBook Air also successfully displayed the music Dynamic Island on this Build. I'm not sure whether it works on other macOS versions w
 
-## A ready-to-run version
+# By the Way w
 
-By the way, I asked ChatGPT Codex to make a version that you can run directly. Download the ZIP, extract it, and run `Enable_native_Dynamic_Island.command`.
+I asked ChatGPT Codex to help me make a version that can be executed just by opening it awa
 
-Remember to disable SIP first. The script may ask for an administrator password; follow the prompts.
+After downloading and extracting the ZIP, simply run `啟動原生動態島.command` and you're good to go w
 
-## 1. Download and check the project
+But don't forget to disable SIP =.=
 
-Download and extract the project. Make sure the folder contains:
+Oh, and when running it, you may be asked for an administrator password and need to follow the on-screen instructions :D
+
+# 1. Download and Check the Project w
+
+Download and extract the project, then make sure the folder contains:
 
 ```text
 README.md
@@ -45,7 +50,7 @@ manifest.json
 startup_lldb.py
 ```
 
-Then run these commands in Terminal:
+Next, run the following commands in Terminal:
 
 ```sh
 sw_vers -buildVersion
@@ -55,63 +60,68 @@ xcrun --find lldb
 shasum -a 256 /System/Library/CoreServices/MenuBarAgent.app/Contents/MacOS/MenuBarAgent
 ```
 
-Confirm that the Build, SHA-256, and UUID match `manifest.json`, and that the architecture is `arm64`.
+Make sure the Build, SHA-256, and UUID all match `manifest.json`, and the architecture must be `arm64`.
 
-**Stop if anything does not match.** macOS updates may change the relevant addresses, so do not use old addresses on a different build.
+If anything doesn't match, stop immediately. Memory addresses may change after macOS updates, so don't force old addresses to work awa
 
-## 2. Disable SIP
+# 2. Disable SIP
 
-If `csrutil status` reports `enabled`:
+If SIP shows `enabled`:
 
-1. Shut down your Mac and hold the power button until startup options appear.
-2. Select **Options → Continue**.
-3. From the menu bar, open **Utilities → Terminal**.
-4. Run:
+Shut down → Press and hold the power button → "Options" → "Continue"
 
-   ```sh
-   csrutil disable
-   ```
+From the menu bar, open "Utilities" → "Terminal".
 
-5. Then run:
+Run:
 
-   ```sh
-   reboot
-   ```
+```sh
+csrutil disable
+```
 
-6. After returning to the normal desktop, run:
+Then run:
 
-   ```sh
-   csrutil status
-   ```
+```sh
+reboot
+```
 
-Confirm that SIP is `disabled`.
+After returning to the normal desktop:
 
-## 3. Pause MenuBarAgent and attach LLDB
+```sh
+csrutil status
+```
 
-In a regular Terminal window, run:
+Make sure SIP is disabled and the status shows `disabled`.
+
+# 3. Suspend MenuBarAgent and Attach LLDB
+
+Run the following command in a normal Terminal:
 
 ```sh
 sudo launchctl debug gui/$(id -u)/com.apple.MenuBarAgent --start-suspended
 ```
 
-After you see `Service configured for next launch.`, run:
+After seeing `Service configured for next launch.`:
+
+Run:
 
 ```sh
 launchctl kickstart -k gui/$(id -u)/com.apple.MenuBarAgent
 xcrun lldb -n MenuBarAgent
 ```
 
-The menu bar may temporarily stop responding. If LLDB attaches successfully, it should show `MenuBarAgent` stopped near `dyld_start` because of `SIGSTOP`.
+The menu bar may temporarily stop responding. When LLDB successfully attaches, it should show MenuBarAgent stopped near `dyld_start`, with `SIGSTOP` as the stop reason.
 
-## 4. Load the experiment script
+# 4. Load the Experimental Script w
 
-At the `(lldb)` prompt, enter the following command. Replace the example with the absolute path to the script on your Mac:
+At the `(lldb)` prompt, enter the following command.
+
+Replace the path with the absolute path on your own computer:
 
 ```text
-command script import /Users/your-username/Downloads/native-mac-island-experiment-main/startup_lldb.py
+command script import /Users/你的帳號/Downloads/native-mac-island-experiment-main/startup_lldb.py
 ```
 
-You should see a message similar to:
+If successful, you should see a message similar to:
 
 ```text
 Startup HUD breakpoints installed. Continue; inspect startup_lldb.hits before claiming success.
@@ -119,29 +129,29 @@ Startup HUD breakpoints installed. Continue; inspect startup_lldb.hits before cl
 
 Then you can continue.
 
-If an error occurs, stop and follow the recovery instructions in the project README.
+But if an error occurs, stop first and follow the recovery instructions in the README.
 
-## 5. Start and check the Dynamic Island
+# 5. Start and Verify Dynamic Island w
 
-At the LLDB prompt, enter:
+Enter the following command in LLDB:
 
 ```text
 continue
 ```
 
-Wait for the menu bar to respond again. Play music or use an existing Live Activity to check whether the Dynamic Island appears. **Only count it as successful if you can see it on screen.**
+Wait for the menu bar to recover, then play some music or use an existing Live Activity to check whether Dynamic Island appears. Only consider it successful if you can actually see it on the screen.
 
-Then press **Ctrl-C** and enter:
+Next, press `Ctrl-C`, then enter:
 
 ```text
 script print(startup_lldb.hits)
 ```
 
-Confirm that both `gate` and `flags` are greater than `0`.
+Make sure both `gate` and `flags` are greater than `0`.
 
-## 6. Exit LLDB while keeping the Dynamic Island
+# 6. Exit LLDB While Keeping Dynamic Island Active w
 
-After confirming that it works, enter these commands at the `(lldb)` prompt:
+After confirming that it works, enter the following commands in order at the `(lldb)` prompt:
 
 ```text
 breakpoint delete --force
@@ -149,6 +159,10 @@ process detach
 quit
 ```
 
-This lets `MenuBarAgent` continue running.
+This allows `MenuBarAgent` to continue running.
 
-To keep the Dynamic Island, do not run `launchctl kickstart -k ...`, log out, or restart your Mac. This is important: the effect remains only while `MenuBarAgent` keeps running.
+If you want to keep Dynamic Island active, do not run `launchctl kickstart -k ...`.
+
+Also, do not log out or restart your Mac (this is very important awa
+
+As long as `MenuBarAgent` doesn't restart, the Dynamic Island effect can remain active :D
